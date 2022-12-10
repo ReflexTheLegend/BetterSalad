@@ -1,0 +1,19 @@
+{
+    "MinerType": {
+        "GPU": 0,
+        "CPU": 0
+    },
+    "Miners": {
+        "Phoenix": 0,
+        "TRex": 0,
+        "NBMiner": 0,
+        "TeamRedMiner": 0,
+        "lolMiner": 0,
+        "XMRig": 0
+    },
+    "last": {
+        "miner": "",
+        "algo": "",
+        "params": ""
+    }
+}
