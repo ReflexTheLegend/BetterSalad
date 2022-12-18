@@ -63,9 +63,3 @@ def make_miners_folder():
     if not os.path.exists('miners'):
         os.mkdir('miners')
 make_miners_folder()
-
-minersapi = requests.get('https://raw.githubusercontent.com/RadsammyT/SaladBind-Archive/8bb7fde1c96e185fb1b5f4e61dfd3cb334f6197f/internal/miners.json').json()
-link = minersapi['miners']['phoenixminer']['download']['win32']
-urllib.request.urlretrieve(link, os.getcwd()+'/miners/PhoenixMiner.zip')
-shutil.unpack_archive(filename=os.getcwd()+'/miners/PhoenixMiner.zip', extract_dir=os.getcwd()+'/miners/Phoenix')
-os.remove(path=os.getcwd()+'/miners/PhoenixMiner.zip')

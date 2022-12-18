@@ -1,7 +1,9 @@
-from colored import fg, attr, bg
+from colored import fg, attr
 import subprocess
 import psutil
-
+import os
+from src.SaladBindAPI import download_miner
+from setup import make_miners_folder
 commands = [
     'help',
     'balance',
@@ -29,7 +31,11 @@ def func_miners():
 
 
 def func_selectminer():
-   print(f'{fg(46)}Availiable Miners\n{fg(220)}XMRig{attr(0)}')
+   if os.path.exists(os.getcwd()+'/miners/'):
+      download_miner()
+   else:
+      make_miners_folder()
+      download_miner()
 
 cpucores = psutil.cpu_count(logical=False)
 cpuname = subprocess.check_output('wmic path win32_Processor get name').decode().split('Name')[1].strip('\n\r ')
@@ -72,9 +78,6 @@ while True:
       func_miners()
    elif choice == 'mine':
       text = f'{fg(155)}BetterSalad/mine:{fg(105)}~{fg(155)}${fg(15)} '
-      print(f'{fg(155)}Select type of miner {fg(240)}(CPU/GPU): {attr(0)}', end='')
-      minetypechoice = str(input())
-      if minetypechoice == 'cpu' or minetypechoice == 'CPU':
-         func_selectminer()
+      func_selectminer()
    else:
       func_unknowncmd()
